@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "398954140264",
+    "project_id": "firestorefirebase-b43b3",
+    "storage_bucket": "firestorefirebase-b43b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398954140264:android:eb6ae2fb6dcde04a8e21dd",
+        "android_client_info": {
+          "package_name": "com.dynamishcfirestore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398954140264-kq92m3fukg9d76r9cilsega08vgdpc65.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dynamishcfirestore",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "398954140264-qf9hh1f76ailokvgtpns5kuc04omjlq6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzSr7OH25mc5a7MV7Eh8HQcOUr0CdpuDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398954140264-qf9hh1f76ailokvgtpns5kuc04omjlq6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
