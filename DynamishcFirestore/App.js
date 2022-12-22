@@ -1,12 +1,12 @@
 
 
-
 import React, { useState, useEffect } from 'react';
 import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, ScrollView, Alert, FlatList, RefreshControl } from 'react-native';
 import { Task2 } from './component/Task2';
 import firestore from '@react-native-firebase/firestore';
 import { GoogleIn } from './GoogleIn';
-import { Button } from 'react-native-paper';
+import PushNotification from "react-native-push-notification";
+
 export default function App() {
 
   const wait = (timeout) => {
@@ -24,8 +24,6 @@ export default function App() {
     wait(1000).then(() => setRefreshing(false));
   }, []);
 
-
-
   let newarr = [];
   const [arr, setarr] = useState([]);
   const [task, setTask] = useState();
@@ -41,7 +39,18 @@ export default function App() {
    
     fetchdata();
   }, []);
+  
+  const createChannels = () => {
 
+    PushNotification.createChannel({
+
+      channelId: 'test-channel',
+
+      channelName: 'Test Channel',
+
+    });
+
+  };
 async function fetchdata()
 {
   const postData = await GetData(postsPerLoad);
@@ -81,7 +90,6 @@ async function fetchMoredata()
       return {arr,lastvisible}
   }
 
-
   const handleAddTask = () => {
     Keyboard.dismiss();
     setTaskItems([...taskItems, task])
@@ -97,7 +105,8 @@ async function fetchMoredata()
     }
 
     addTodo();
-
+    Notificaion();
+    GetData();
   }
 
   const DeleteTask = (deleteitem) => {
@@ -110,6 +119,7 @@ async function fetchMoredata()
         console.log('User deleted!');
       });
     Alert.alert('Deleted');
+    GetData();
   }
 
   const completeTask = (item) => {
@@ -178,7 +188,19 @@ async function fetchMoredata()
    });
    return {arr,lastvisible}
  }
+const Notificaion=()=>
+{
+  
+    PushNotification.localNotification({
 
+    channelId: 'test-channel',
+
+    channelName: 'todo-added',
+
+    message: 'todo added to firebase',
+
+  });
+}
   return (
 
     <View style={styles.container}>
@@ -186,6 +208,7 @@ async function fetchMoredata()
       {/* <GoogleIn/> */}
 
       {/* Today's Tasks */}
+    
       <View style={styles.tasksWrapper}>
         <Text style={styles.sectionTitle}>Today's tasks</Text>
         <View style={styles.items}>
@@ -202,6 +225,7 @@ async function fetchMoredata()
                 <TouchableOpacity onPress={() => setTask(item)}>
                   <Text style={styles.textstyle}>{item}</Text>
                 </TouchableOpacity>
+               
                 <TouchableOpacity onPress={() => DeleteTask(item)} style={styles.deletebtn}><Text style={styles.deltext}>DELETE</Text></TouchableOpacity>
                 <TouchableOpacity onPress={() => UpdateTask(item)} style={styles.updatebtn}><Text style={styles.upltext}>UPDATE</Text></TouchableOpacity>
               </TouchableOpacity>
@@ -295,6 +319,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
     marginLeft: 150,
     marginTop: -25,
+    borderWidth: 1,
+    borderColor: 'white'
+  },
+  noyify: {
+    width: 60,
+    height: 25,
+    backgroundColor: 'red',
+    marginLeft: 150,
+   
     borderWidth: 1,
     borderColor: 'white'
   },
