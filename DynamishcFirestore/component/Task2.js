@@ -16,7 +16,9 @@ export const Task2 = (props) => {
     });
 
   }
-
+const updateItem =()=>{
+  console.log('update item');
+}
   const UpdateTask=(UpdateItem)=>
   {
     

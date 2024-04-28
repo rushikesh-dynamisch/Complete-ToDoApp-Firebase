@@ -65,6 +65,7 @@ const AddItem =()=>{
 const removeItem =()=>{
   console.log('added this line to remove item');  
 }
+
 async function fetchMoredata()
 {
   const postData = await  Getmoreposts(StartAfter,postsPerLoad);
