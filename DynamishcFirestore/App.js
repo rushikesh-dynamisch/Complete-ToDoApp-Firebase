@@ -58,6 +58,9 @@ async function fetchdata()
   setStartAfter(postData.lastvisible);
 }
 
+const AddItem =()=>{
+  console.log("Item added.");  
+}
 async function fetchMoredata()
 {
   const postData = await  Getmoreposts(StartAfter,postsPerLoad);
